@@ -1,6 +1,6 @@
 # vue-remove-scope-directive
 
-Vue directive that stops `data-v-XXXXXX` propagation in components with scoped styles. The primary use is to prevent leaking style into slots.
+Vue directive that stops `data-v-XXXXXX` propagation in components with scoped styles. The primary use is to prevent leaking styles into slots.
 
 ## Install
 
@@ -10,7 +10,7 @@ yarn add vue-remove-scope-directive
 
 ## Use
 
-Import in your entrypoint such as `main.ts`:
+Import in your entrypoint, such as `main.ts`:
 
 ```ts
 import Vue from "vue"
@@ -30,6 +30,7 @@ then use in Vue templates:
 		<main v-remove-scope>
 			<!-- This h1 is not styled -->
 			<h1>Willkommen!</h1>
+			<!-- Neither are slot contents -->
 			<slot />
 		</main>
 	</div>
