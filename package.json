@@ -1,0 +1,72 @@
+{
+  "name": "vue-remove-scope-directive",
+  "version": "0.0.0-development",
+  "description": "Vue directive to prevent style scope leak",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "files": [
+    "src/**",
+    "dist/**"
+  ],
+  "keywords": [
+    "vue"
+  ],
+  "author": "Ilya Semenov",
+  "license": "MIT",
+  "homepage": "https://github.com/IlyaSemenov/vue-remove-scope-directive",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IlyaSemenov/vue-remove-scope-directive.git"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "@wessberg/rollup-plugin-ts": "^1.1.64",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-simple-import-sort": "^4.0.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.17.0",
+    "rollup": "^1.11.3",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "semantic-release": "^15.13.24",
+    "typescript": "^3.4.5",
+    "vue": "^2.6.10"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "prepublish": "npm run build",
+    "lint": "eslint --fix '**/*.{js,ts}'",
+    "semantic-release": "semantic-release"
+  },
+  "prettier": {
+    "useTabs": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}
