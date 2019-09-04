@@ -22,7 +22,8 @@ const directive: Vue.DirectiveOptions = {
 			if (scope_id && scope_id.startsWith("data-")) {
 				const data_field = scope_id.slice(5) // strip 'data-'
 				remove_data_recursively(el, data_field)
-				$options._scopeId = undefined
+				// This seem to break further sibling elements, and it seems to work fine without it in my test cases.
+				// $options._scopeId = undefined
 			}
 		}
 	},
