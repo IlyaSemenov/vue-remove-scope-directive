@@ -47,7 +47,7 @@ and child templates:
 <!-- page.vue -->
 <template>
 	<Layout>
-		<!-- Styles will not leak here either -->
+		<!-- Styles will not leak here -->
 		<h1>Page</h1>
 	</Layout>
 </template>
@@ -62,4 +62,32 @@ import Layout from "@/Layout.vue"
 })
 export default class Page extends Vue {}
 </script>
+```
+
+### Modifiers
+
+`v-remove-scope.inner` modifier keeps `data-v-XXXXXX` attribute on the actual node where the directive is applied (but removes from all inner nodes).
+
+Consider the following example:
+
+```vue
+<template>
+	<div class="page">
+		<main v-remove-scope>
+			<p>This will be unstyled.</p>
+		</main>
+		<footer v-remove-scope.inner>
+			<p>
+				This will be green: footer keeps scope attribute,
+				but the paragraph is cleared.
+			</p>
+		</main>
+	</div>
+</template>
+
+<style scoped>
+	main { color: red }
+	footer { color: green }
+	p { color: blue }
+</style>
 ```
